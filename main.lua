@@ -7,12 +7,13 @@ require "libs/printText"
 require "libs/customButtons"
 require "libs/customToggle"
 require "libs/radioButtons"
+require "libs/highscoreUtil"
 require "common"
 
 menu = "main"
 mode = "classic" -- options are "classic" and "default"
 function love.load()
-       
+    highscore_load()
     common_load() -- Load Common Assets and Members
     
     -- Load Menus
@@ -55,4 +56,7 @@ function love.keypressed(key)
     elseif menu == "game" then
         game_keypressed(key)
     end
+end
+function love.quit()
+    highscore_close()
 end

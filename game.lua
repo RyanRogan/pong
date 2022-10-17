@@ -9,6 +9,7 @@ function game_load()
         timer = 0,
         flashcount = 0,
         maxflash = 3,
+        increment_score = false;
     }
     maxScore = 5
 
@@ -59,6 +60,12 @@ function game_update(dt)
     -- Check if game should be stopped
     if gameover and not pause then
         pause = true
+    elseif gameover then -- When the game is over and we've stopped it
+        if not increment_score then
+            increment_score = true -- Stop any further score increments for this round
+            local winner = determineWhoWon(score.player1, score.player2)
+            highscore_increment(winner)
+        end
     end
 
     -- If game is paused, run pause code and use return to stop playable code from running
@@ -122,5 +129,13 @@ function determineWinOrLose(score)
         return "Winner"
     else
         return "Loser"
+    end
+end
+
+function determineWhoWon(player1_score, player2_score)
+    if player1_score > player2_score then
+        return 1
+    else
+        return 2
     end
 end

@@ -23,6 +23,7 @@ function mainMenu_draw()
         areTogglesDrawn = true
     end ]]
     printCentreTextOnX(logo.text, hugeText, 10)
+    printCentreTextOnX("Player 1: "..highscores.player1.."\tPlayer 2: "..highscores.player2, normalText, 50)
 
     -- createButtonWithFixedWidth("Play "..rabioBtn:getToggled(map_options), bigText, cnt_btn_x, btn1_y, main_btn_w, function() startGame(rabioBtn:getToggled(map_options)) end)
     createButtonWithFixedWidth("Play Game", bigText, cnt_btn_x, btn1_y, main_btn_w, function() startGame("Classic") end)
