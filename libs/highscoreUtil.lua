@@ -22,12 +22,6 @@ function highscore_load()
     end
 end
 
---[[function highscore_calculate(new_score)
-    if new_score > highscore then
-        highscore = new_score
-    end
-end]]
-
 function highscore_increment(winner_id)
     if winner_id == 1 then
         highscores.player1 = highscores.player1 + 1
